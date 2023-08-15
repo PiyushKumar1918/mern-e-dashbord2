@@ -1,36 +1,47 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Nav = ()=>{
-    const auth = localStorage.getItem('user');
-    const navigate = useNavigate();
-    const logout =()=>{
-        localStorage.clear();
-        navigate('/signup')
-    }
-    return(
-        <div>
-            <ul className="nav-ul">
-                <li><Link to="/">Products</Link></li>
-                <li><Link to="/add">Add Product</Link></li>
-                <li><Link to="/update">Update Product</Link></li>
-              <li><Link to="/profile">Profile</Link></li>
-             
-                
-
-                 {
-                    auth ? <li><Link onClick={logout} to="/signup">Logout</Link></li>
-                    :
-                    <>
-                     <li><Link to="/signup">Sign Up</Link></li>
-                 <li><Link to="/login">Login</Link></li>
-                    </>
-
-                 }
-             
-
-            </ul>
-        </div>
-    )
-}
+const Nav = () => {
+  const auth = localStorage.getItem("user");
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear();
+    navigate("/signup");
+  };
+  return (
+    <div>
+        <img alt="logo" className="logo" src="https://images-platform.99static.com//24XqEYuDLH0q-Y-iPAhtliMhXbY=/0x0:2003x2003/fit-in/500x500/99designs-contests-attachments/107/107277/attachment_107277414"/>
+      {auth ? (
+        <ul className="nav-ul">
+          <li>
+            <Link to="/">Products</Link>
+          </li>
+          <li>
+            <Link to="/add">Add Product</Link>
+          </li>
+          <li>
+            <Link to="/update">Update Product</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <Link onClick={logout} to="/signup">
+              Logout ({JSON.parse(auth).name})
+            </Link>
+          </li>
+        </ul>
+      ) : (
+        <ul className="nav-ul nav-right">
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      )}
+    </div>
+  );
+};
 export default Nav;
