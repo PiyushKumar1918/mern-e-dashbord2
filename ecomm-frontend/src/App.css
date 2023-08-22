@@ -78,6 +78,14 @@
   margin-left: 20px;
 }
 
+.search-product{
+  width: 400px;
+  margin: 20px;
+  height: 40px;
+  border: 1px solid skyblue;
+  padding-left: 20px;
+}
+
 /* login */
 .login{
   margin-left: 30%;
